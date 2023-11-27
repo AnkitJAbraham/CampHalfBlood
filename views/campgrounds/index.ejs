@@ -6,15 +6,12 @@
     <% for (let campground of campgrounds){%>
     <div class="card mb-3">
         <div class="row">
-            <div class="col-md-4">
-                <% if (campground.images.length) { %>
-                    <div class="d-flex align-items-center justify-content-center">
-                        <img class="img-fluid" alt="" src="<%=campground.images[0].url%>">
-                    </div>
-                <% } else { %>
-                    <div class="d-flex align-items-center justify-content-center">
-                        <img class="img-fluid" alt="" src="https://res.cloudinary.com/daftamtcn/image/upload/v1600103881/YelpCamp/lz8jjv2gyynjil7lswf4.png">
-                    </div>
+            <div class="col-md-4 d-flex align-items-center justify-content-center">
+                <%if(campground.images.length) {%>
+                <img class="img-fluid" alt="" src="<%=campground.images[0].url%>">
+                <% }else {%>
+                <img class="img-fluid" alt=""
+                    src="https://res.cloudinary.com/daftamtcn/image/upload/v1600103881/YelpCamp/lz8jjv2gyynjil7lswf4.png">
                 <% } %>
             </div>
             <div class="col-md-8">
