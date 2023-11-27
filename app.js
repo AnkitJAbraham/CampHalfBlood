@@ -115,7 +115,7 @@ if (process.env.NODE_ENV !== "production") {
                  "'self'",
                  "blob:",
                  "data:",
-                 "https://res.cloudinary.com/douqbebwk/", //SHOULD MATCH YOUR CLOUDINARY ACCOUNT! 
+                 "https://res.cloudinary.com/daftamtcn/", //SHOULD MATCH YOUR CLOUDINARY ACCOUNT! 
                  "https://images.unsplash.com/",
              ],
              fontSrc: ["'self'", ...fontSrcUrls],
