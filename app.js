@@ -19,7 +19,7 @@ const userRoutes = require("./routes/users");
 const campgroundRoutes = require("./routes/campgrounds");
 const reviewRoutes = require("./routes/reviews");
 
-const MongoDBStore = require("connect-mongo")(session);
+const MongoStore = require("connect-mongo");
 //latest change
 const dbUrl = process.env.DB_URL || "mongodb://localhost:27017/camphalfblood";
 
@@ -52,8 +52,8 @@ app.use(
 );
 const secret = process.env.SECRET || "thisshouldbeabettersecret!";
 
-const store = new MongoDBStore({
-  url: dbUrl,
+const store = MongoStore.create({
+  mongoUrl: dbUrl,
   secret,
   touchAfter: 24 * 60 * 60,
 });
@@ -161,3 +161,4 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Serving on port ${port}`);
 });
+
