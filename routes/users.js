@@ -26,13 +26,26 @@ passport.authenticate('local', {failureFlash: true, failureRedirect: '/login'}),
 });
 
 router.get('/logout', (req, res, next) => {
-    req.logout(function (err) {
+    console.log('Logout endpoint hit'); // Debugging: Check if the route is being called
+
+    req.logout((err) => {
         if (err) {
-            return next(err);
+            console.error('Error during logout:', err); // Log the error if req.logout fails
+            return next(err); // Pass the error to Express error handler
         }
-        req.flash('success', 'Goodbye!');
-        res.redirect('/campgrounds');
+        console.log('Logout successful'); // Confirm successful logout
+        req.session.destroy((err) => {
+            if (err) {
+                console.error('Session destruction error:', err); // Log if session destruction fails
+                return next(err);
+            }
+            res.clearCookie('connect.sid'); // Clear the session cookie
+            console.log('Session cleared and cookie removed'); // Confirm successful session clearing
+            req.flash('success', 'Goodbye!');
+            res.redirect('/campgrounds'); // Redirect the user
+        });
     });
-}); 
+});
+
 
 module.exports = router;

@@ -58,7 +58,7 @@ body {
 }
 
 .transform {
-  transform: none; /* You can add your specific transformation here */
+  transform: none;
 }
 
 .hover-scale-110:hover {
