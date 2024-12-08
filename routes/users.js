@@ -4,7 +4,7 @@ const passport = require('passport');
 const catchAsync = require('../utils/catchAsync');
 const User = require('../models/user');
 const users = require('../controllers/users');
-const { storeReturnTo } = require('../middleware');
+const { checkReturnTo } = require('../middleware');
 
 // Handle registration routes
 router.route('/register')
@@ -15,7 +15,7 @@ router.route('/register')
 router.route('/login')
   .get(users.renderLogin)
   .post(
-    storeReturnTo, // Middleware to store returnTo value
+    checkReturnTo, // Middleware to store returnTo value
     passport.authenticate('local', { failureFlash: true, failureRedirect: '/login' }),
     (req, res) => {
       req.flash('success', 'Welcome back!');
