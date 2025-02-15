@@ -19,8 +19,5 @@
       "src": "/(.*)",
       "dest": "/public/index.html"
     }
-  ],
-  "env": {
-    "DB_URL": "@db-url"
-  }
+  ]
 }
